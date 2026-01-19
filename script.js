@@ -5,17 +5,41 @@ const sentences = {
     easy: [
         "The quick brown fox jumps over the lazy dog.",
         "Typing is fun and easy to learn.",
-        "Practice makes perfect."
+        "Practice makes perfect.",
+        "I love to code every day.",
+        "Keep learning new things.",
+        "This game improves your typing speed.",
+        "Good habits make a good programmer.",
+        "Focus on accuracy first.",
+        "Small steps lead to big results.",
+        "Consistency is the key to success.",
+        "Never give up on coding challenges."
     ],
     medium: [
         "JavaScript is a versatile programming language used for web development.",
         "Artificial Intelligence and Machine Learning are changing the world.",
-        "Building small projects improves your coding skills."
+        "Building small projects improves your coding skills.",
+        "Debugging code requires patience and logic.",
+        "Web development involves HTML, CSS, and JavaScript.",
+        "Practicing algorithms enhances problem-solving ability.",
+        "Time management is essential for a programmer.",
+        "Always test your code before submission.",
+        "Version control with Git helps track changes effectively.",
+        "Learning new frameworks keeps your skills up to date.",
+        "Clean code is easier to read and maintain."
     ],
     hard: [
         "Developing interactive web applications requires knowledge of HTML, CSS, and JavaScript.",
         "Optimizing code and algorithms ensures better performance and user experience.",
-        "Consistently practicing programming challenges strengthens problem-solving skills."
+        "Consistently practicing programming challenges strengthens problem-solving skills.",
+        "Understanding data structures deeply improves software efficiency.",
+        "Complex projects require careful planning and teamwork.",
+        "Debugging intricate systems requires analytical thinking and patience.",
+        "Refactoring legacy code is often more challenging than writing new code.",
+        "Advanced algorithms like dynamic programming solve complex problems efficiently.",
+        "Version control workflows like Git branching improve collaborative development.",
+        "Learning multiple programming paradigms expands a developer's versatility.",
+        "Software engineering principles guide developers to write maintainable and scalable code."
     ]
 };
 
@@ -33,6 +57,24 @@ const submitBtn = document.getElementById('submit');
 const restartBtn = document.getElementById('restart');
 const difficultySelect = document.getElementById('difficulty');
 const toggleThemeBtn = document.getElementById('toggle-theme');
+const ratingStars = document.getElementById('rating-stars');
+// Show star rating based on accuracy
+function showRating(accuracy) {
+    ratingStars.innerHTML = ""; // Clear previous stars
+    let stars = 0;
+    if (accuracy >= 81) stars = 5;
+    else if (accuracy >= 61) stars = 4;
+    else if (accuracy >= 41) stars = 3;
+    else if (accuracy >= 21) stars = 2;
+    else stars = 1;
+    for (let i = 1; i <= 5; i++) {
+        const star = document.createElement('span');
+        star.classList.add('star');
+        star.innerHTML = '★';
+        if (i <= stars) star.classList.add('filled');
+        ratingStars.appendChild(star);
+    }
+}
 
 // Game variables
 let currentSentenceIndex = 0;
@@ -117,6 +159,8 @@ function calculateAccuracy() {
 submitBtn.addEventListener('click', () => {
     calculateAccuracy();
     calculateWPM(Math.floor((new Date() - startTime)/1000));
+    const accuracy = parseInt(accuracyDisplay.innerText);
+    showRating(accuracy); // Show stars based on accuracy
     streak = Math.max(streak, parseInt(wpmDisplay.innerText));
     streakDisplay.innerText = streak;
     inputText.value = "";
