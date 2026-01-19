@@ -9,15 +9,36 @@
 <body>
     <div class="container">
         <h1>Typing Speed Test ⌨️</h1>
-        <p id="text-to-type">The quick brown fox jumps over the lazy dog.</p>
+
+        <!-- Difficulty Selection -->
+        <div class="difficulty">
+            <label>Difficulty: </label>
+            <select id="difficulty">
+                <option value="easy">Easy</option>
+                <option value="medium" selected>Medium</option>
+                <option value="hard">Hard</option>
+            </select>
+        </div>
+
+        <!-- Text to Type -->
+        <p id="text-to-type"></p>
+
+        <!-- Input Box -->
         <textarea id="input-text" placeholder="Start typing here..."></textarea>
+
+        <!-- Results -->
         <div class="results">
-            <p>Time: <span id="time">0</span> sec</p>
+            <p>Time: <span id="time">60</span> sec</p>
             <p>WPM: <span id="wpm">0</span></p>
             <p>Accuracy: <span id="accuracy">0</span>%</p>
+            <p>Streak: <span id="streak">0</span></p>
         </div>
+
+        <!-- Controls -->
         <button id="restart">Restart</button>
+        <button id="toggle-theme">🌙 Dark Mode</button>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
