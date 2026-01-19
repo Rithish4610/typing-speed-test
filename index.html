@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Typing Speed Test</title>
+    <title>Typing Speed Test Game</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>Typing Speed Test ⌨️</h1>
+        <h1>Typing Speed Test Game ⌨️</h1>
 
         <!-- Difficulty Selection -->
         <div class="difficulty">
@@ -24,19 +24,23 @@
         <p id="text-to-type"></p>
 
         <!-- Input Box -->
-        <textarea id="input-text" placeholder="Start typing here..."></textarea>
+        <textarea id="input-text" placeholder="Type the sentence here..."></textarea>
+
+        <!-- Controls -->
+        <div class="controls">
+            <button id="submit">Submit ✅</button>
+            <button id="restart">Restart 🔄</button>
+            <button id="toggle-theme">🌙 Dark Mode</button>
+        </div>
 
         <!-- Results -->
         <div class="results">
-            <p>Time: <span id="time">60</span> sec</p>
+            <p>Time: <span id="time">0</span> sec</p>
             <p>WPM: <span id="wpm">0</span></p>
             <p>Accuracy: <span id="accuracy">0</span>%</p>
             <p>Streak: <span id="streak">0</span></p>
+            <p>Sentence: <span id="sentence-number">1</span>/<span id="total-sentences">0</span></p>
         </div>
-
-        <!-- Controls -->
-        <button id="restart">Restart</button>
-        <button id="toggle-theme">🌙 Dark Mode</button>
     </div>
 
     <script src="script.js"></script>
